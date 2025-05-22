@@ -95,6 +95,40 @@ class _MapPageState extends State<MapPage> {
     return parts.join(', ');
   }
 
+  Future<void> _onTap(LatLng latlng) async {
+    final placemarks = await placemarkFromCoordinates(
+      latlng.latitude,
+      latlng.longitude,
+    );
+
+    final p = placemarks.first;
+    final address = formatAddress(p);
+
+    setState(() {
+      _pickedMarker = Marker(
+        markerId: const MarkerId('picked'),
+        position: latlng,
+        infoWindow: InfoWindow(
+          title: address.isNotEmpty ? address : 'Lokasi Dipilih',
+          snippet:
+              address.isNotEmpty
+                  ? address
+                  : 'Koordinat: ${latlng.latitude}, ${latlng.longitude}',
+        ),
+      );
+    });
+
+    final ctrl = await _ctrl.future;
+    await ctrl.animateCamera(CameraUpdate.newLatLngZoom(latlng, 16));
+
+    setState(() {
+      _pickedAddress =
+          address.isNotEmpty
+              ? address
+              : 'Koordinat: ${latlng.latitude}, ${latlng.longitude}';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
