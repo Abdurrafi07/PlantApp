@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:plantapp/camera_page.dart';
 import 'package:plantapp/constraints.dart';
+import 'package:plantapp/map_page.dart';
 import 'package:plantapp/storage_helper.dart';
 
 class HeaderWithSearchbox extends StatefulWidget {
@@ -74,6 +75,18 @@ class _HeaderWithSearchboxState extends State<HeaderWithSearchbox> {
             ),
           ),
     );
+  }
+
+  Future<void> _openMapAndSelectAddress() async {
+    final selectedAddress = await Navigator.push<String?>(
+      context,
+      MaterialPageRoute(builder: (_) => const MapPage()),
+    );
+    if (selectedAddress != null && selectedAddress.isNotEmpty) {
+      setState(() {
+        _selectedAddress = selectedAddress;
+      });
+    }
   }
 
   @override
