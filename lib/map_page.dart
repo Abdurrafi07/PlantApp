@@ -55,6 +55,45 @@ class _MapPageState extends State<MapPage> {
     }
   }
 
+  Future<Position> getPermissions() async {
+    if (!await Geolocator.isLocationServiceEnabled()) {
+      throw 'Location service belum aktif';
+    }
+
+    LocationPermission perm = await Geolocator.checkPermission();
+    if (perm == LocationPermission.denied) {
+      perm = await Geolocator.requestPermission();
+
+      if (perm == LocationPermission.denied) {
+        throw 'Izin lokasi ditolak';
+      }
+      if (perm == LocationPermission.deniedForever) {
+        throw 'Izin lokasi ditolak permanen';
+      }
+    }
+
+    return Geolocator.getCurrentPosition();
+  }
+
+  String formatAddress(Placemark p) {
+    final parts = <String>[];
+
+    void addIfNotEmptyAndNotDuplicate(String? value) {
+      if (value != null && value.isNotEmpty && !parts.contains(value)) {
+        parts.add(value);
+      }
+    }
+
+    addIfNotEmptyAndNotDuplicate(p.name);
+    addIfNotEmptyAndNotDuplicate(p.street);
+    addIfNotEmptyAndNotDuplicate(p.subLocality);
+    addIfNotEmptyAndNotDuplicate(p.locality);
+    addIfNotEmptyAndNotDuplicate(p.administrativeArea);
+    addIfNotEmptyAndNotDuplicate(p.postalCode);
+    addIfNotEmptyAndNotDuplicate(p.country);
+
+    return parts.join(', ');
+  }
 
   @override
   Widget build(BuildContext context) {
