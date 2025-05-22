@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:plantapp/screen/home/components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Body(),
+    );
   }
 }
