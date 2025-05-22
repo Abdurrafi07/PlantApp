@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:plantapp/constraints.dart';
 
 class ImageAndIcons extends StatelessWidget {
@@ -13,9 +14,28 @@ class ImageAndIcons extends StatelessWidget {
         height: size.height * 0.8,
         child: Row(
           children: <Widget>[
-            Expanded(child: Padding(padding: const EdgeInsets.symmetric(
-              vertical: kDefaultPadding * 2.0,
-            )))
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: kDefaultPadding * 2.0,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(padding: const EdgeInsets.symmetric(
+                        horizontal: kDefaultPadding,
+                      ),
+                      icon: SvgPicture.asset("assets/icon/back_arrow.svg"),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
