@@ -233,6 +233,18 @@ class _MapPageState extends State<MapPage> {
               heroTag: 'confirm',
               label: const Text('Pilih Alamat'),
             ),
+          const SizedBox(height: 8),
+          if (_pickedAddress != null)
+            FloatingActionButton.extended(
+              heroTag: 'clear',
+              label: const Text('Hapus Alamat'),
+              onPressed: () {
+                setState(() {
+                  _pickedAddress = null;
+                  _pickedMarker = null;
+                });
+              },
+            ),
         ],
       ),
     );
