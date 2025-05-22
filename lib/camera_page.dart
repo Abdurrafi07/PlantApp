@@ -186,6 +186,13 @@ class _CameraPageState extends State<CameraPage> {
   }
 
   @override
+  void dispose() {
+    _controller?.dispose();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return const Placeholder();
   }
