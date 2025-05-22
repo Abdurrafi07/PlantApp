@@ -139,6 +139,32 @@ class _HeaderWithSearchboxState extends State<HeaderWithSearchbox> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 8),
+                GestureDetector(
+                  onTap: _openMapAndSelectAddress,
+                  child: Row(
+                    children: [
+                      Transform.translate(
+                        offset: const Offset(-4, 0),
+                        child: const Icon(
+                          Icons.location_on,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(width: 2),
+                      Expanded(
+                        child: Text(
+                          _selectedAddress ?? "Pilih lokasi Anda",
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
