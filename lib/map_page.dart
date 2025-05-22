@@ -129,6 +129,30 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
+  void _confirmSelection() {
+    showDialog(
+      context: context,
+      builder:
+          (_) => AlertDialog(
+            title: const Text('Konfirmasi Alamat'),
+            content: Text(_pickedAddress ?? ''),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context, _pickedAddress);
+                },
+                child: const Text('Pilih'),
+              ),
+            ],
+          ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
