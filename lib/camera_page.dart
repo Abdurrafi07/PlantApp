@@ -32,6 +32,34 @@ class _CameraPageState extends State<CameraPage> {
     await _setupCamera(_selectedCameraIdx);
   }
 
+  Future<void> _setupCamera(int cameraIndex) async {
+    if (_controller != null) {
+      await _controller!.dispose();
+    }
+
+    final controller = CameraController(
+      _cameras[cameraIndex],
+      ResolutionPreset.max,
+      enableAudio: false,
+    );
+
+    await controller.initialize();
+    _minZoom = await controller.getMinZoomLevel();
+    _maxZoom = await controller.getMaxZoomLevel();
+    _isZoomSupported = _maxZoom > _minZoom;
+    _zoom = _minZoom;
+
+    await controller.setZoomLevel(_zoom);
+    await controller.setFlashMode(_flashMode);
+
+    if (mounted) {
+      setState(() {
+        _controller = controller;
+        _selectedCameraIdx = cameraIndex;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
