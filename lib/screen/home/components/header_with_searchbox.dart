@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:plantapp/constraints.dart';
 
 class HeaderWithSearchbox extends StatelessWidget {
@@ -58,6 +59,24 @@ class HeaderWithSearchbox extends StatelessWidget {
                     blurRadius: 50,
                     color: kPrimaryColor.withOpacity(0.23),
                   ),
+                ],
+              ),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      onChanged: (value) {},
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        hintStyle: TextStyle(
+                          color: kPrimaryColor.withOpacity(0.5),
+                        ),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  SvgPicture.asset("assets/icons/search.svg"),
                 ],
               ),
             ),
