@@ -82,6 +82,23 @@ class _CameraPageState extends State<CameraPage> {
     setState(() => _flashMode = next);
   }
 
+  void _setZoom(double value) async {
+    if (!_isZoomSupported) return;
+    _zoom = value.clamp(_minZoom, _maxZoom);
+    await _controller!.setZoomLevel(_zoom);
+    setState(() {});
+  }
+
+  void _handleTap(TapDownDetails details, BoxConstraints constraint) {
+    final offset = Offset(
+      details.localPosition.dx / constraint.maxWidth,
+      details.localPosition.dy / constraint.maxHeight,
+    );
+
+    _controller?.setFocusPoint(offset);
+    _controller?.setExposurePoint(offset);
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
