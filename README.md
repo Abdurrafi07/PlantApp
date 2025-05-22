@@ -17,15 +17,23 @@
 
 ![image](https://github.com/user-attachments/assets/c6a3191e-81f8-47b8-b498-d4dd36ba190e)
 
-# Camera 
+# Izin Camera
 
 ![image](https://github.com/user-attachments/assets/66f31869-a3db-47a0-abec-e8df00ef53af)
 
+# Camera Ddepan
+
 ![image](https://github.com/user-attachments/assets/fe588b21-d50c-40c4-8e3a-ab53169ecbbd)
 
-# Setelah Ambil Gambar Camera dan Galery
-
 ![image](https://github.com/user-attachments/assets/26bbe9a8-c388-4df2-9b99-afdbeb1b5283)
+
+# Camera Belakang
+
+![image](https://github.com/user-attachments/assets/c409dab6-52ab-4153-925a-a1951c17fd52)
+
+![image](https://github.com/user-attachments/assets/e33e2fea-a346-4144-bd62-f1bd4b25a477)
+
+# Setelah Ambil Gambar Camera dan Galery
 
 ![image](https://github.com/user-attachments/assets/26fb71ea-ad85-46d3-a889-18c852e9f546)
 
