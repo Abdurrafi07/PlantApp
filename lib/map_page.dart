@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -159,10 +162,32 @@ class _MapPageState extends State<MapPage> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     return Scaffold(
-      appBar: AppBar(title: const Text('Pilih Alamat'),),
-      body: SafeArea(child: Stack(
-        children: [],
-      ),),
+      appBar: AppBar(title: const Text('Pilih Alamat')),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            GoogleMap(
+              initialCameraPosition: _initialCamera!,
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
+              mapType: MapType.terrain,
+              compassEnabled: true,
+              tiltGesturesEnabled: false,
+              scrollGesturesEnabled: true,
+              zoomGesturesEnabled: true,
+              rotateGesturesEnabled: true,
+              trafficEnabled: true,
+              buildingsEnabled: true,
+              indoorViewEnabled: true,
+              onMapCreated: (GoogleMapController ctrl) {
+                _ctrl.complete(ctrl);
+              },
+              markers: _pickedMarker != null ? {_pickedMarker!} : {},
+              onTap: _onTap,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
