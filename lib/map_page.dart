@@ -23,6 +23,39 @@ class _MapPageState extends State<MapPage> {
     _setupLocation();
   }
 
+  Future<void> _setupLocation() async {
+    try {
+      final pos = await getPermissions();
+      _currentPosition = pos;
+      _initialCamera = CameraPosition(
+        target: LatLng(pos.latitude, pos.longitude),
+        zoom: 16,
+      );
+
+      final placemarks = await placemarkFromCoordinates(
+        _currentPosition!.latitude,
+        _currentPosition!.longitude,
+      );
+
+      final p = placemarks.first;
+      final formattedAddress = formatAddress(p);
+      _currentAddress =
+          formattedAddress.isNotEmpty
+              ? formattedAddress
+              : 'Koordinat: ${pos.latitude}, ${pos.longitude}';
+
+      setState(() {});
+    } catch (e) {
+      _initialCamera = const CameraPosition(target: LatLng(0, 0), zoom: 21);
+      setState(() {});
+      print(e);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
