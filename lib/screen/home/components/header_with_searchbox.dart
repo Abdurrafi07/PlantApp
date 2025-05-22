@@ -110,17 +110,35 @@ class _HeaderWithSearchboxState extends State<HeaderWithSearchbox> {
                 bottomRight: Radius.circular(36),
               ),
             ),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  'Hi Abdurrafi!',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'Hi Abdurrafi!',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () => _showImageSourceActionSheet(context),
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Colors.white,
+                        backgroundImage:
+                            _imageFile != null
+                                ? FileImage(_imageFile!)
+                                : const AssetImage("assets/images/logo.png")
+                                    as ImageProvider,
+                      ),
+                    ),
+                  ],
                 ),
-                Spacer(),
-                Image.asset("assets/images/logo.png"),
               ],
             ),
           ),
