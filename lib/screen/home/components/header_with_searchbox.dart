@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantapp/constraints.dart';
 
-class HeaderWithSearchbox extends StatelessWidget {
+class HeaderWithSearchbox extends StatefulWidget {
   final Size size;
   const HeaderWithSearchbox({super.key, required this.size});
 
   @override
+  State<HeaderWithSearchbox> createState() => _HeaderWithSearchboxState();
+}
+
+class _HeaderWithSearchboxState extends State<HeaderWithSearchbox> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: kDefaultPadding * 2.5),
-      height: size.height * 0.25,
+      height: widget.size.height * 0.25,
       child: Stack(
         children: <Widget>[
           Container(
@@ -19,7 +24,7 @@ class HeaderWithSearchbox extends StatelessWidget {
               right: kDefaultPadding,
               bottom: 36 + kDefaultPadding + 30,
             ),
-            height: size.height * 0.25 - 27,
+            height: widget.size.height * 0.25 - 27,
             decoration: const BoxDecoration(
               color: kPrimaryColor,
               borderRadius: BorderRadius.only(
