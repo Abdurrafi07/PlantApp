@@ -26,6 +26,19 @@ class HeaderWithSearchbox extends StatelessWidget {
                 bottomRight: Radius.circular(36),
               ),
             ),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  'Hi Abdurrafi!',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Spacer(),
+                Image.asset("assets/images/logo.png"),
+              ],
+            ),
           ),
         ],
       ),
