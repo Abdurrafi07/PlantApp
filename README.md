@@ -33,6 +33,11 @@
 
 ![image](https://github.com/user-attachments/assets/78a56047-d7b2-478f-86ac-8b9f7ca99cc8)
 
+![image](https://github.com/user-attachments/assets/d748048e-716f-4911-bab3-1dea3c8946a6)
+
+![image](https://github.com/user-attachments/assets/714d4422-38d5-40e2-9f61-1792b564d25a)
+
+![image](https://github.com/user-attachments/assets/67bae9f9-224e-419b-910b-70aefe0388d2)
 
 # plantapp
 
