@@ -27,6 +27,11 @@ class _CameraPageState extends State<CameraPage> {
     _initialCamera();
   }
 
+  Future<void> _initialCamera() async {
+    _cameras = await availableCameras();
+    await _setupCamera(_selectedCameraIdx);
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
