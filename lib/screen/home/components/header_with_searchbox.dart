@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:plantapp/constraints.dart';
 
 class HeaderWithSearchbox extends StatefulWidget {
@@ -11,6 +14,15 @@ class HeaderWithSearchbox extends StatefulWidget {
 }
 
 class _HeaderWithSearchboxState extends State<HeaderWithSearchbox> {
+  File? _imageFile;
+  String? _selectedAddress;
+
+  Future<void> _requestPermissions() async {
+    await Permission.camera.request();
+    await Permission.storage.request();
+    await Permission.manageExternalStorage.request();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
